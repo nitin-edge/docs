@@ -53,7 +53,7 @@
     },
     {
       "name": "Vacancy API Reference",
-      "openapi": "vacancy-api-reference/openapi.json",
+      "openapi": "/vacancy-api-reference/openapi.json",
       "url": "vacancy-api-reference",
       "icon": "square-terminal"
     }
