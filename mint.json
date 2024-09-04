@@ -29,6 +29,10 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "Vacancy API Reference",
+      "url": "vacancy-api-reference"
     }
   ],
   "anchors": [
@@ -46,6 +50,12 @@
       "name": "Blog",
       "icon": "newspaper",
       "url": "https://mintlify.com/blog"
+    },
+    {
+      "name": "Vacancy API Reference",
+      "openapi": "vacancy-api-reference/openapi.json",
+      "url": "vacancy-api-reference",
+      "icon": "square-terminal"
     }
   ],
   "navigation": [
