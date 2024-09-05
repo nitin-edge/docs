@@ -23,14 +23,6 @@
     {
       "name": "API Reference",
       "url": "api-reference"
-    },
-    {
-      "name": "Taxonomy API Reference",
-      "url": "taxonomy-api-reference"
-    },
-    {
-      "name": "Vacancy API Reference",
-      "url": "vacancy-api-reference"
     }
   ],
   "anchors": [
