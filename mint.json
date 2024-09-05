@@ -111,8 +111,14 @@
     {
       "group": "Schemas",
       "pages": [
-        "api-reference/schemas/get-schema-html",
-        "api-reference/schemas/get-schema"
+
+        "api-reference/schemas/skill",
+        "api-reference/schemas/skill_category",
+        "api-reference/schemas/function",
+        "api-reference/schemas/taxonomy",
+        "api-reference/schemas/vacancy",
+        "api-reference/schemas/get-schema-html"
+
       ]
     }
   ],
