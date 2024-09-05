@@ -1,0 +1,68 @@
+---
+title: 'API Reference'
+description: 'Complete API reference for the Taxonomy API'
+---
+
+# Taxonomy API Reference
+
+Welcome to the Taxonomy API reference. This comprehensive guide details all available endpoints, request parameters, and response structures.
+
+<Card title="Base URL" icon="server">
+  http://localhost:8000
+</Card>
+
+## API Endpoints
+
+Our API is organized around four main resources:
+
+<CardGroup>
+
+<Card title="Functions" icon="sitemap" href="#tag/functions">
+  Manage job functions and roles
+</Card>
+
+<Card title="Skill Categories" icon="folder-tree" href="#tag/skill-categories">
+  Organize skills into categories
+</Card>
+
+<Card title="Skills" icon="lightbulb" href="#tag/skills">
+  Create and manage individual skills
+</Card>
+
+<Card title="Taxonomy" icon="diagram-project" href="#tag/taxonomy">
+  Build relationships between functions, categories, and skills
+</Card>
+
+</CardGroup>
+
+## Common Parameters
+
+Many endpoints support the following query parameters:
+
+- `skip`: Number of items to skip (for pagination)
+- `limit`: Maximum number of items to return (default: 10, max: 100)
+- `sort`: Field to sort by (prepend with `-` for descending order)
+
+## Response Format
+
+All responses are returned in JSON format. Successful responses will have a 2xx status code, while errors will have a 4xx or 5xx status code.
+
+## Error Handling
+
+In case of an error, the API will return a JSON object with an `error` field containing a human-readable error message.
+
+Example error response:
+
+```json
+{
+  "error": "Invalid API key provided"
+}
+```
+
+## Need Help?
+
+If you encounter any issues or have questions about using the API, please [contact our support team](mailto:support@yourdomain.com).
+
+---
+
+{/* The OpenAPI spec will be automatically inserted here */}
