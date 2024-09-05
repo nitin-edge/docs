@@ -1,110 +1,129 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Taxonomy API Documentation",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "light": "light.png",
+    "dark": "dark.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "favicon.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
+    "primary": "#0069ED",
+    "light": "#4D9CFF",
+    "dark": "#0050B4"
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@yourdomain.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
-  "tabs": [
+    "name": "Get API Key",
+    "url": "https://your-api-key-page.com"
+  },"tabs": [
     {
       "name": "API Reference",
-      "openapi": "/api-reference/taxonomy_opeapi.json",
       "url": "api-reference"
-    },
-    {
-      "name": "Vacancy API Reference",
-      "url": "vacancy-api-reference"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "API Reference",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "api-reference"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    },
-    {
-      "name": "Vacancy API Reference",
-      "openapi": "/vacancy-api-reference/openapi.json",
-      "url": "vacancy-api-reference",
-      "icon": "square-terminal"
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/yourusername/your-repo"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Getting Started",
+      "pages": ["introduction", "authentication"]
+    },
+    {
+      "group": "Auth",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "api-reference/auth/user-login"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Vacancy",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/vacancy/create-a-new-vacancy",
+        "api-reference/vacancy/delete-a-vacancy",
+        "api-reference/vacancy/get-a-specific-vacancy",
+        "api-reference/vacancy/list-vacancies",
+        "api-reference/vacancy/update-a-vacancy"
       ]
     },
     {
       "group": "Functions",
       "pages": [
         "api-reference/functions/create-function",
-        "api-reference/functions/delete-function",
-        "api-reference/functions/read-function"
+        "api-reference/functions/list-functions",
+        "api-reference/functions/read-function",
+        "api-reference/functions/update-function",
+        "api-reference/functions/delete-function"
+      ]
+    },
+    {
+      "group": "Skill Categories",
+      "pages": [
+        "api-reference/skill-categories/create-skill-category",
+        "api-reference/skill-categories/list-skill-categories",
+        "api-reference/skill-categories/read-skill-category",
+        "api-reference/skill-categories/update-skill-category",
+        "api-reference/skill-categories/delete-skill-category"
+      ]
+    },
+    {
+      "group": "Skills",
+      "pages": [
+        "api-reference/skills/create-skill",
+        "api-reference/skills/list-skills",
+        "api-reference/skills/read-skill",
+        "api-reference/skills/update-skill",
+        "api-reference/skills/delete-skill"
+      ]
+    },
+    {
+      "group": "Taxonomy",
+      "pages": [
+        "api-reference/taxonomy/create-taxonomy",
+        "api-reference/taxonomy/read-taxonomy",
+        "api-reference/taxonomy/update-taxonomy",
+        "api-reference/taxonomy/delete-taxonomy"
+      ]
+    },
+    {
+      "group": "Search",
+      "pages": [
+        "api-reference/skills/search-skills",
+        "api-reference/skill-categories/search-skill-categories",
+        "api-reference/functions/search-functions",
+        "api-reference/taxonomy/search-taxonomy",
+        "api-reference/search/search-vacancies"
+      ]
+    },
+    {
+      "group": "Schemas",
+      "pages": [
+        "api-reference/schemas/get-schema-html",
+        "api-reference/schemas/get-schema"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/yourcompany",
+    "github": "https://github.com/yourcompany",
+    "linkedin": "https://www.linkedin.com/company/yourcompany"
+  },
+  "api": {
+    "baseUrl": "http://127.0.0.1:8000",
+    "auth": {
+      "method": "bearer"
+    }
   }
 }
