@@ -1,0 +1,135 @@
+---
+title: 'API Usage Examples'
+description: 'Examples of how to use the Nucleus and Taxonomy APIs'
+---
+
+This guide provides practical examples of how to use the Nucleus and Taxonomy APIs. We'll cover common scenarios for both APIs using curl commands.
+
+### Nucleus API Examples
+
+#### User Authentication
+
+To use the Nucleus API, you first need to authenticate:
+
+```bash
+curl -X POST http://localhost:5000/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "your_username", "password": "your_password"}'
+```
+
+This will return an access token that you'll use for subsequent requests.
+
+#### Creating a Vacancy
+
+To create a new vacancy:
+
+```bash
+curl -X POST http://localhost:5000/vacancies \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "external_id": "JOB123",
+    "job_title": "Software Engineer",
+    "job_description": "We are looking for a talented software engineer...",
+    "language": "English",
+    "company": "Tech Innovators Inc.",
+    "location": {
+      "city": "San Francisco",
+      "state": "California",
+      "country": "USA"
+    },
+    "domain": "Software Development",
+    "work_ex": {
+      "min": 2,
+      "max": 5
+    }
+  }'
+```
+
+#### Searching Vacancies
+
+To search for vacancies:
+
+```bash
+curl -X POST http://localhost:5000/vacancies/search \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Software Engineer",
+    "company": "Tech Innovators Inc.",
+    "limit": 10
+  }'
+```
+
+### Taxonomy API Examples
+
+#### Creating a Function
+
+To create a new function:
+
+```bash
+curl -X POST https://api.yourdomain.com/v1/functions/ \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "function_name": "Software Development",
+    "source": {
+      "is_vacancy": true
+    }
+  }'
+```
+
+#### Adding a Skill
+
+To add a new skill:
+
+```bash
+curl -X POST https://api.yourdomain.com/v1/skills/ \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "skill_name": "Python Programming"
+  }'
+```
+
+#### Creating a Taxonomy
+
+To create a new taxonomy entry:
+
+```bash
+curl -X POST https://api.yourdomain.com/v1/taxonomy/create \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '[
+    {
+      "function": "Software Development",
+      "skill_category": "Programming Languages",
+      "skill": "Python Programming",
+      "is_validated": true
+    }
+  ]'
+```
+
+#### Searching Skills
+
+To search for skills:
+
+```bash
+curl -X GET "https://api.yourdomain.com/v1/skills/search/?query=python" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+### Combining the APIs
+
+You can use both APIs together to create powerful applications. For example, you might:
+
+1. Use the Nucleus API to create a new vacancy
+2. Use the Taxonomy API to categorize the skills required for the vacancy
+3. Use the Taxonomy API's search functionality to find related skills or functions
+4. Update the vacancy in the Nucleus API with the additional information
+
+This combination allows for rich, structured job postings with standardized skill taxonomies.
+
+Remember to replace `YOUR_ACCESS_TOKEN` and `YOUR_API_KEY` with your actual authentication credentials. Also, adjust the API URLs to match your actual API endpoints.
+
+These examples should help you get started with the Nucleus and Taxonomy APIs. For more detailed information on each endpoint, please refer to the [API Reference](api-reference) section.
