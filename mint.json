@@ -48,24 +48,15 @@
         "api-reference/auth/user-login"
       ]
     },
+
     {
-      "group": "Vacancy",
+      "group": "Skills",
       "pages": [
-        "api-reference/vacancy/create-a-new-vacancy",
-        "api-reference/vacancy/delete-a-vacancy",
-        "api-reference/vacancy/get-a-specific-vacancy",
-        "api-reference/vacancy/list-vacancies",
-        "api-reference/vacancy/update-a-vacancy"
-      ]
-    },
-    {
-      "group": "Functions",
-      "pages": [
-        "api-reference/functions/create-function",
-        "api-reference/functions/list-functions",
-        "api-reference/functions/read-function",
-        "api-reference/functions/update-function",
-        "api-reference/functions/delete-function"
+        "api-reference/skills/create-skill",
+        "api-reference/skills/list-skills",
+        "api-reference/skills/read-skill",
+        "api-reference/skills/update-skill",
+        "api-reference/skills/delete-skill"
       ]
     },
     {
@@ -79,13 +70,13 @@
       ]
     },
     {
-      "group": "Skills",
+      "group": "Functions",
       "pages": [
-        "api-reference/skills/create-skill",
-        "api-reference/skills/list-skills",
-        "api-reference/skills/read-skill",
-        "api-reference/skills/update-skill",
-        "api-reference/skills/delete-skill"
+        "api-reference/functions/create-function",
+        "api-reference/functions/list-functions",
+        "api-reference/functions/read-function",
+        "api-reference/functions/update-function",
+        "api-reference/functions/delete-function"
       ]
     },
     {
@@ -95,6 +86,16 @@
         "api-reference/taxonomy/read-taxonomy",
         "api-reference/taxonomy/update-taxonomy",
         "api-reference/taxonomy/delete-taxonomy"
+      ]
+    },
+    {
+      "group": "Vacancy",
+      "pages": [
+        "api-reference/vacancy/create-a-new-vacancy",
+        "api-reference/vacancy/delete-a-vacancy",
+        "api-reference/vacancy/get-a-specific-vacancy",
+        "api-reference/vacancy/list-vacancies",
+        "api-reference/vacancy/update-a-vacancy"
       ]
     },
     {
