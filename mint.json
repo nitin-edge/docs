@@ -115,7 +115,8 @@
         "api-reference/skill-events/update-skill-event",
         "api-reference/skill-events/delete-skill-event",
         "api-reference/skill-events/read-skill-event",
-        "api-reference/skill-events/list-skill-events"
+        "api-reference/skill-events/list-skill-events",
+        "api-reference/skill-events/skill-events-count"
       ]
     },
     {
