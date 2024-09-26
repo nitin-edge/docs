@@ -104,7 +104,7 @@
       "pages": [
         "api-reference/employee/create-employee",
         "api-reference/employee/read-employee",
-        "api-reference/employee/update-employee",
+        "api-reference/employee/list-employees",
         "api-reference/employee/delete-employee",
         "api-reference/employee/get-employee-count"
       ]
