@@ -99,12 +99,32 @@
       ]
     },
     {
+      "group": "Employee",
+      "pages": [
+        "api-reference/employee/create-employee",
+        "api-reference/employee/read-employee",
+        "api-reference/employee/update-employee",
+        "api-reference/employee/delete-employee",
+        "api-reference/employee/get-employee-count"
+      ]
+    },
+    {
+      "group": "SkillEvents",
+      "pages": [
+        "api-reference/skill-events/create-skill-event",
+        "api-reference/skill-events/update-skill-event",
+        "api-reference/skill-events/delete-skill-event",
+        "api-reference/skill-events/read-skill-event",
+        "api-reference/skill-events/list-skill-events"
+      ]
+    },
+    {
       "group": "Search",
       "pages": [
         "api-reference/skills/search-skills",
         "api-reference/skill-categories/search-skill-categories",
         "api-reference/functions/search-functions",
-        "api-reference/taxonomy/search-taxonomy",
+        "api-reference/taxonomy/search-taxonomies",
         "api-reference/search/search-vacancies"
       ]
     },
@@ -128,7 +148,7 @@
     "linkedin": "https://www.linkedin.com/company/yourcompany"
   },
   "api": {
-    "baseUrl": "http://localhost:8000",
+    "baseUrl": "https://ds--dev--employee--api.edgenetworks.ai",
     "auth": {
       "method": "bearer"
     },"playground": {"disableProxy": true}
