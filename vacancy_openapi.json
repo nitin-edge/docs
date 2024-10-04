@@ -1,266 +1,222 @@
 {
-    "openapi": "3.1.0",
-    "info": {
-      "title": "Nucleus API",
-      "version": "1.0.0",
-      "description": "API specification for Nucleus application"
-    },
-    "servers": [
-      {
-        "url": "http://localhost:5000"
-      }
-    ],
-    "paths": {
-      "/login": {
-        "post": {
-          "summary": "User login",
-          "tags": [
-            "auth"
-          ],
-          "requestBody": {
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Job Ingestion Service",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/job/": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "summary": "Fetch Job",
+        "description": "Get API - To fetch the job using job external_id",
+        "operationId": "fetch_job_job__get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "query",
             "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          },
+          {
+            "name": "tenant_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "nucleus-default",
+              "title": "Tenant Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginRequest"
-                }
+                "schema": {}
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Successful login",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/LoginResponse"
-                  }
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
           }
         }
       },
-      "/vacancies": {
-        "get": {
-          "summary": "List vacancies",
-          "tags": [
-            "vacancy"
-          ],
-          "security": [
-            {
-              "bearerAuth": []
+      "patch": {
+        "tags": [
+          "Job"
+        ],
+        "summary": "Update Job",
+        "description": "Patch api - To update the fields which doesn't hold any importance\n            in business logic of matching/intelligence.",
+        "operationId": "update_job_job__patch",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
             }
-          ],
-          "parameters": [
-            {
-              "in": "query",
-              "name": "skip",
-              "schema": {
-                "type": "integer"
-              }
-            },
-            {
-              "in": "query",
-              "name": "limit",
-              "schema": {
-                "type": "integer"
-              }
-            },
-            {
-              "in": "query",
-              "name": "is_active",
-              "schema": {
-                "type": "boolean"
-              }
+          },
+          {
+            "name": "tenant_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "nucleus-default",
+              "title": "Tenant Id"
             }
-          ],
-          "responses": {
-            "200": {
-              "description": "List of vacancies",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Vacancy"
-                    }
-                  }
-                }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobPatch"
               }
             }
           }
         },
-        "post": {
-          "summary": "Create a new vacancy",
-          "tags": [
-            "vacancy"
-          ],
-          "security": [
-            {
-              "bearerAuth": []
-            }
-          ],
-          "requestBody": {
-            "required": true,
+        "responses": {
+          "200": {
+            "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VacancyCreate"
-                }
+                "schema": {}
               }
             }
           },
-          "responses": {
-            "201": {
-              "description": "Vacancy created successfully",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Vacancy"
-                  }
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
           }
         }
       },
-      "/vacancies/{vacancy_id}": {
-        "get": {
-          "summary": "Get a specific vacancy",
-          "tags": [
-            "vacancy"
-          ],
-          "security": [
-            {
-              "bearerAuth": []
+      "delete": {
+        "tags": [
+          "Job"
+        ],
+        "summary": "Delete Job",
+        "description": "delete api - To soft delete the job",
+        "operationId": "delete_job_job__delete",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
             }
-          ],
-          "parameters": [
-            {
-              "in": "path",
-              "name": "vacancy_id",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Vacancy details",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Vacancy"
-                  }
-                }
-              }
+          },
+          {
+            "name": "tenant_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "nucleus-default",
+              "title": "Tenant Id"
             }
           }
-        },
-        "patch": {
-          "summary": "Update a vacancy",
-          "tags": [
-            "vacancy"
-          ],
-          "security": [
-            {
-              "bearerAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "in": "path",
-              "name": "vacancy_id",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VacancyUpdate"
-                }
+                "schema": {}
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Vacancy updated successfully",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Vacancy"
-                  }
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete a vacancy",
-          "tags": [
-            "vacancy"
-          ],
-          "security": [
-            {
-              "bearerAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "in": "path",
-              "name": "vacancy_id",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Vacancy deleted successfully"
             }
           }
         }
       },
-      "/vacancies/search": {
-        "post": {
-          "summary": "Search vacancies",
-          "tags": [
-            "search"
-          ],
-          "security": [
-            {
-              "bearerAuth": []
+      "post": {
+        "tags": [
+          "Job"
+        ],
+        "summary": "Create Job",
+        "description": "Post method to create the Job",
+        "operationId": "create_job_job__post",
+        "parameters": [
+          {
+            "name": "is_upsert",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Is Upsert"
             }
-          ],
-          "requestBody": {
-            "required": true,
+          },
+          {
+            "name": "tenant_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "nucleus-default",
+              "title": "Tenant Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VacancySearchRequest"
-                }
+                "schema": {}
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Search results",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Vacancy"
-                    }
-                  }
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
@@ -268,184 +224,548 @@
         }
       }
     },
-    "components": {
-      "schemas": {
-        "LoginRequest": {
-          "type": "object",
-          "required": [
-            "username",
-            "password"
-          ],
-          "properties": {
-            "username": {
-              "type": "string"
-            },
-            "password": {
-              "type": "string"
+    "/job/count": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "summary": "Get Jobs Count",
+        "description": "fetch total count of jobs",
+        "operationId": "get_jobs_count_job_count_get",
+        "parameters": [
+          {
+            "name": "tenant_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "nucleus-default",
+              "title": "Tenant Id"
             }
           }
-        },
-        "LoginResponse": {
-          "type": "object",
-          "properties": {
-            "access_token": {
-              "type": "string"
-            }
-          }
-        },
-        "Vacancy": {
-          "type": "object",
-          "properties": {
-            "external_id": {
-              "type": "string"
-            },
-            "job_title": {
-              "type": "string"
-            },
-            "job_description": {
-              "type": "string"
-            },
-            "language": {
-              "type": "string"
-            },
-            "company": {
-              "type": "string"
-            },
-            "location": {
-              "$ref": "#/components/schemas/Location"
-            },
-            "domain": {
-              "type": "string"
-            },
-            "work_ex": {
-              "$ref": "#/components/schemas/WorkExperience"
-            }
-          }
-        },
-        "VacancyCreate": {
-          "type": "object",
-          "required": [
-            "external_id",
-            "job_title",
-            "job_description",
-            "language",
-            "company",
-            "location",
-            "domain",
-            "work_ex"
-          ],
-          "properties": {
-            "external_id": {
-              "type": "string"
-            },
-            "job_title": {
-              "type": "string"
-            },
-            "job_description": {
-              "type": "string"
-            },
-            "language": {
-              "type": "string"
-            },
-            "company": {
-              "type": "string"
-            },
-            "location": {
-              "$ref": "#/components/schemas/Location"
-            },
-            "domain": {
-              "type": "string"
-            },
-            "work_ex": {
-              "$ref": "#/components/schemas/WorkExperience"
-            }
-          }
-        },
-        "VacancyUpdate": {
-          "type": "object",
-          "properties": {
-            "company": {
-              "type": "string"
-            }
-          }
-        },
-        "Location": {
-          "type": "object",
-          "properties": {
-            "city": {
-              "type": "string"
-            },
-            "state": {
-              "type": "string"
-            },
-            "country": {
-              "type": "string"
-            }
-          }
-        },
-        "WorkExperience": {
-          "type": "object",
-          "properties": {
-            "min": {
-              "type": "integer"
-            },
-            "max": {
-              "type": "integer"
-            }
-          }
-        },
-        "SkillProfile": {
-          "type": "object",
-          "properties": {
-            "skills": {
-              "type": "array",
-              "items": {
-                "type": "string"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
               }
             }
-          }
-        },
-        "SkillProfileUpdate": {
-          "type": "object",
-          "properties": {
-            "skills": {
-              "type": "array",
-              "items": {
-                "type": "string"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
               }
-            }
-          }
-        },
-        "VacancySearchRequest": {
-          "type": "object",
-          "properties": {
-            "skip": {
-              "type": "integer"
-            },
-            "limit": {
-              "type": "integer"
-            },
-            "is_deleted": {
-              "type": "boolean"
-            },
-            "company": {
-              "type": "string"
-            },
-            "title": {
-              "type": "string"
-            },
-            "domain": {
-              "type": "string"
             }
           }
         }
-      },
-      "securitySchemes": {
-        "bearerAuth": {
-          "type": "http",
-          "scheme": "bearer",
-          "bearerFormat": "JWT"
+      }
+    },
+    "/job/list": {
+      "get": {
+        "tags": [
+          "Job"
+        ],
+        "summary": "List Jobs",
+        "description": "Get method to list the jobs",
+        "operationId": "list_jobs_job_list_get",
+        "parameters": [
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Skip"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "is_active",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Is Active"
+            }
+          },
+          {
+            "name": "tenant_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "nucleus-default",
+              "title": "Tenant Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/job/search": {
+      "post": {
+        "tags": [
+          "Job"
+        ],
+        "summary": "Search Job",
+        "description": "Free text search on the below mentioned fields",
+        "operationId": "search_job_job_search_post",
+        "parameters": [
+          {
+            "name": "tenant_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "nucleus-default",
+              "title": "Tenant Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobSearch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "JobBase": {
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "title": "External Id",
+            "description": "Unique ID under specific Client for Mapping"
+          },
+          "job_title": {
+            "type": "string",
+            "title": "Job Title",
+            "description": "Title of the job"
+          },
+          "job_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Description",
+            "description": "Detailed job description"
+          },
+          "skills": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skills",
+            "description": "Job skills as comma separated value"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language",
+            "description": "Language of the job posting"
+          },
+          "is_active": {
+            "type": "boolean",
+            "title": "Is Active",
+            "description": "Current status: open or closed",
+            "default": true
+          },
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company",
+            "description": "Client name"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Location data (either Lat/Long or full address)"
+          },
+          "work_ex": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WorkExp"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Total experience in a specific format"
+          }
+        },
+        "type": "object",
+        "required": [
+          "external_id",
+          "job_title",
+          "language",
+          "company"
+        ],
+        "title": "JobBase",
+        "description": "Job base model with critical fields\n- All the fields are needed form the client\n- All the fields defined here has Edge business logic linked"
+      },
+      "JobPatch": {
+        "properties": {
+          "is_active": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Active",
+            "description": "Current status: open or closed"
+          },
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company",
+            "description": "Client name"
+          },
+          "domain": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Domain",
+            "description": "Domain related to the job"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Location data (either Lat/Long or full address)"
+          },
+          "work_ex": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WorkExp"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Total experience in a specific format"
+          }
+        },
+        "type": "object",
+        "title": "JobPatch",
+        "description": "Job Partial Update model\n- All the fields are needed form the client\n- All these fields has no business logic impact, primarily used for filtration"
+      },
+      "JobSearch": {
+        "properties": {
+          "skip": {
+            "type": "integer",
+            "title": "Skip",
+            "description": "search offset"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit",
+            "description": "each page size",
+            "default": 10
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "title": "Is Deleted",
+            "description": "filter deleted jobs",
+            "default": false
+          },
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company",
+            "description": "filter jobs by company"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title",
+            "description": "filter jobs by title"
+          },
+          "domain": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Domain",
+            "description": "filter jobs by domain"
+          }
+        },
+        "type": "object",
+        "required": [
+          "skip"
+        ],
+        "title": "JobSearch",
+        "description": "Payload contract for job search API"
+      },
+      "Location": {
+        "properties": {
+          "lat": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lat",
+            "description": "Latitude of the location"
+          },
+          "long": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Long",
+            "description": "Longitude of the location"
+          },
+          "city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "City",
+            "description": "City"
+          },
+          "state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "State",
+            "description": "State"
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country",
+            "description": "Country"
+          },
+          "postal_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Postal Code",
+            "description": "Postal Code"
+          }
+        },
+        "type": "object",
+        "title": "Location",
+        "description": "location profile model"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "WorkExp": {
+        "properties": {
+          "min": {
+            "type": "integer",
+            "title": "Min",
+            "description": "min experience"
+          },
+          "max": {
+            "type": "integer",
+            "title": "Max",
+            "description": "max experience"
+          }
+        },
+        "type": "object",
+        "required": [
+          "min",
+          "max"
+        ],
+        "title": "WorkExp",
+        "description": "Work Experience model"
+      }
+    }
   }
+}

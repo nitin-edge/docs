@@ -43,13 +43,6 @@
       "pages": ["introduction", "authentication", "example_usage"]
     },
     {
-      "group": "Auth",
-      "pages": [
-        "api-reference/auth/user-login"
-      ]
-    },
-
-    {
       "group": "Skills",
       "pages": [
         "api-reference/skills/create-skill",
@@ -89,20 +82,21 @@
       ]
     },
     {
-      "group": "Vacancy",
+      "group": "Job",
       "pages": [
-        "api-reference/vacancy/create-a-new-vacancy",
-        "api-reference/vacancy/delete-a-vacancy",
-        "api-reference/vacancy/get-a-specific-vacancy",
-        "api-reference/vacancy/list-vacancies",
-        "api-reference/vacancy/update-a-vacancy",
-        "api-reference/vacancy/get-vacancy-count"
+        "api-reference/job/create-job",
+        "api-reference/job/delete-job",
+        "api-reference/job/fetch-job",
+        "api-reference/job/list-jobs",
+        "api-reference/job/update-job",
+        "api-reference/job/get-jobs-count"
       ]
     },
     {
       "group": "Employee",
       "pages": [
         "api-reference/employee/create-employee",
+        "api-reference/jira/create-jira-events",
         "api-reference/employee/read-employee",
         "api-reference/employee/list-employees",
         "api-reference/employee/delete-employee",
@@ -117,7 +111,8 @@
         "api-reference/skill-events/delete-skill-event",
         "api-reference/skill-events/read-skill-event",
         "api-reference/skill-events/list-skill-events",
-        "api-reference/skill-events/skill-events-count"
+        "api-reference/skill-events/skill-events-count",
+        "api-reference/skill-events/employee-skill-events-info"
       ]
     },
     {
@@ -127,7 +122,8 @@
         "api-reference/skill-categories/search-skill-categories",
         "api-reference/functions/search-functions",
         "api-reference/taxonomy/search-taxonomies",
-        "api-reference/search/search-vacancies"
+        "api-reference/job/search-jobs",
+        "api-reference/employee/search-employees"
       ]
     },
     {
@@ -138,7 +134,8 @@
         "api-reference/schemas/skill_category",
         "api-reference/schemas/function",
         "api-reference/schemas/taxonomy",
-        "api-reference/schemas/vacancy",
+        "api-reference/schemas/job",
+        "api-reference/schemas/employee",
         "api-reference/schemas/get-schema-html"
 
       ]
